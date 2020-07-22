@@ -1,6 +1,6 @@
 package com.learnProgramming.lists;
 
-public class LinkedLists {
+public class DoublyLinkedLists {
 
     public static void main(String[] args) {
 
@@ -9,33 +9,30 @@ public class LinkedLists {
         Employee employee3 = new Employee(3, "James", "Cornor");
         Employee employee4 = new Employee(4, "Harry", "Styles");
 
-        EmployeeLinkedList list = new EmployeeLinkedList();
-
-        System.out.println(list.isEmpty());
-
+        EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
         list.addToFront(employee1);
         list.addToFront(employee2);
         list.addToFront(employee3);
         list.addToFront(employee4);
 
+        list.printList();
         System.out.println(list.getSize());
 
+        Employee employee5 = new Employee(5, "Bill", "Adams");
+
+        list.addToEnd(employee5);
         list.printList();
+        System.out.println(list.getSize());
 
         list.removeFromFront();
-
+        list.printList();
         System.out.println(list.getSize());
 
+        list.removeFromEnd();
         list.printList();
+        System.out.println(list.getSize());
 
-        //for integer linked list
-        IntegerLinkedList intList = new IntegerLinkedList();
-        intList.insertSorted(4);
-        intList.insertSorted(5);
-        intList.insertSorted(3);
-        intList.insertSorted(7);
-        intList.insertSorted(6);
-        System.out.println(intList.getSize());
-        intList.printList();
+        list.addBefore(employee4, employee3);
+        list.printList();
     }
 }
