@@ -35,7 +35,33 @@ public class LinkedLists {
         intList.insertSorted(3);
         intList.insertSorted(7);
         intList.insertSorted(6);
-        System.out.println(intList.getSize());
+        intList.insertSorted(2);
+        intList.insertSorted(9);
+        System.out.println("Insert Sorted:");
         intList.printList();
+
+        System.out.println("Is List Palindrome:");
+        System.out.println(intList.isPalindrome());
+
+        IntegerNode node = new IntegerNode(4);
+        intList.deleteNode(node);
+        System.out.println("After deleting 4:");
+        intList.printList();
+
+        intList.removeNthFromEnd(3);
+        System.out.println("After deleting 3rd from end");
+        intList.printList();
+
+        intList.reverseList();
+        System.out.println("After reversing list:");
+        intList.printList();
+
+        IntegerLinkedList intList2 = new IntegerLinkedList();
+        intList2.addToFront(3);
+        intList2.addToFront(4);
+        intList2.addToFront(4);
+        intList2.addToFront(3);
+        System.out.println("Is List2 Palindrome:");
+        System.out.println(intList2.isPalindrome());
     }
 }
