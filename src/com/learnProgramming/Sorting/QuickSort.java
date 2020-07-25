@@ -1,4 +1,4 @@
-package com.learnProgramming.ds.Sorting;
+package com.learnProgramming.Sorting;
 
 public class QuickSort {
 
