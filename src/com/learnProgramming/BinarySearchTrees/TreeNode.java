@@ -1,5 +1,7 @@
 package com.learnProgramming.BinarySearchTrees;
 
+import java.util.*;
+
 public class TreeNode {
 
     private int data;
@@ -79,6 +81,52 @@ public class TreeNode {
         if(rightChild!=null){
             rightChild.traversePreOrder();
         }
+    }
+
+    public boolean isValidBST(TreeNode node, Integer lower, Integer upper) {
+        if(node==null){
+            return true;
+        }
+
+        Integer value = node.getData();
+        if(lower!=null && value<=lower){
+            return false;
+        }
+        if(upper!=null && value>=upper){
+            return false;
+        }
+
+        if(!(isValidBST(node.getRightChild(),value,upper))){
+            return false;
+        }
+
+        if(!(isValidBST(node.getLeftChild(),lower,value))){
+            return false;
+        }
+
+        return true;
+    }
+
+    public List<List<Integer>> levelOrder(Queue<TreeNode> queue) {
+        List<List<Integer>> levelOrder = new ArrayList<>();
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> list1 = new ArrayList<>();
+            for(int i=0;i<size;i++){
+                TreeNode node = queue.remove();
+                list1.add(node.getData());
+                if(node.getLeftChild()!=null){
+                    queue.add(node.getLeftChild());
+                }
+                if(node.getRightChild()!=null){
+                    queue.add(node.getRightChild());
+                }
+            }
+            levelOrder.add(list1);
+
+        }
+
+        return levelOrder;
     }
 
     public int getData() {
