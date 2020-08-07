@@ -1,5 +1,6 @@
 package com.learnProgramming.String;
 
+//Given a 32-bit signed integer, reverse digits of an integer.
 public class ReverseInteger {
 
     public static int reverse(int x) {

@@ -2,6 +2,7 @@ package com.learnProgramming.String;
 
 import java.util.Arrays;
 
+//Given two strings s and t , write a function to determine if t is an anagram of s.
 public class ValidAnagram {
 
     public static boolean isAnagram(String s, String t) {
