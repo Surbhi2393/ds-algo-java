@@ -28,7 +28,6 @@ public class Main {
     public static void main(String[] args) {
         Sample A = new Sample("A");
         Sample B = new Sample("B");
-
         B.start();
         A.start();
     }
