@@ -36,6 +36,17 @@ public class Solutions {
         int arr[] = {1, 11, 100, 1, 0, 200, 3, 2, 1, 250};
         int num = 280;
         smallestsubArray(arr, num);
+
+        String s = "kmretasscityylpdhuwjirnqimlkcgxubxmsxpypgzxtenweirknjtasxtvxemtwxuarabssvqdnktqadhyktagjxoanknhgilnm";
+        long n = 736778906400L;
+
+        System.out.println(repeatedString(s,n));
+
+        int[] c ={0,0,1,0,0,1,0};
+        System.out.println(jumpingOnClouds(c));
+
+        int[] ar={4,5,5,5,6,6,4,1,4,4,3,6,6,3,6,1,4,5,5,5};
+        System.out.println(sockMerchant(ar.length,ar));
     }
 
     public static int findFirstNonRepeatngChar(char[] input){
@@ -198,5 +209,77 @@ public class Solutions {
         }
 
         System.out.println("Minimum length: "+count);
+    }
+
+    //Hackerrank
+    //Return an integer representing the number of occurrences of a in the prefix of length n in the infinitely repeating string.
+    public static long repeatedString(String s, long n) {
+
+        if(s.length()==1 & s.equals("a")){
+            return n;
+        }
+
+        long num = n/s.length();
+        long remaining = n%s.length();
+        long count=0;
+        for(int i =0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if(c=='a'){
+                count++;
+            }
+        }
+
+        long numofchar = count * num;
+
+        for(int i =0; i<remaining; i++){
+            char c = s.charAt(i);
+            if(c=='a'){
+                numofchar++;
+            }
+        }
+
+        return numofchar;
+    }
+
+    //HackerRank
+    //Return the minimum number of jumps required to go to end.
+    public static int jumpingOnClouds(int[] c) {
+
+        int i=0;
+        int count=0;
+        while(i<c.length-1){
+            int oneStep = i+1;
+            int twoStep = i+2;
+            if(twoStep<c.length && c[twoStep]!=1){
+                i=twoStep;
+                count++;
+            }else if(oneStep<c.length && c[oneStep]!=1){
+                i=oneStep;
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    //HackerRank
+    //Return an integer representing the number of matching pairs of socks that are available.
+    public static int sockMerchant(int n, int[] ar) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<ar.length; i++){
+            map.put(ar[i],map.getOrDefault(ar[i],0)+1);
+        }
+
+        int count=0;
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            Integer num = entry.getValue();
+            while(num>=2){
+                num=num-2;
+                count++;
+            }
+        }
+
+        return count;
     }
 }

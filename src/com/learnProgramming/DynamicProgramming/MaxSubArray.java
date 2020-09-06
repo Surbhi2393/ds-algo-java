@@ -1,5 +1,7 @@
 package com.learnProgramming.DynamicProgramming;
 
+import java.util.List;
+
 public class MaxSubArray {
 
     public static int maxSubArray(int[] nums) {
@@ -19,6 +21,27 @@ public class MaxSubArray {
         }
 
         return max;
+    }
+
+    public static int contiguousArray(List<Integer> inputArray) {
+
+        if(inputArray.size()==1){
+            return inputArray.get(0);
+        }
+
+        int max = inputArray.get(0);
+        int maxCurrent = 0;
+        for (Integer num : inputArray){
+            maxCurrent+=num;
+            if(maxCurrent==0 || num>maxCurrent){
+                maxCurrent = num;
+            }
+
+            max = Math.max(max,maxCurrent);
+        }
+
+        return max;
+
     }
 
     public static void main(String[] args) {
