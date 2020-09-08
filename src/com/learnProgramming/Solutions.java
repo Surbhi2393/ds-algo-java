@@ -1,9 +1,6 @@
 package com.learnProgramming;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Solutions {
 
@@ -47,6 +44,9 @@ public class Solutions {
 
         int[] ar={4,5,5,5,6,6,4,1,4,4,3,6,6,3,6,1,4,5,5,5};
         System.out.println(sockMerchant(ar.length,ar));
+
+        String str = "UDDDUDUU";
+        System.out.println(countingValleys(str.length(),str));
     }
 
     public static int findFirstNonRepeatngChar(char[] input){
@@ -277,6 +277,36 @@ public class Solutions {
             while(num>=2){
                 num=num-2;
                 count++;
+            }
+        }
+
+        return count;
+    }
+
+    //HackerRank
+    //Return an integer that denotes the number of valleys traversed.
+    public static int countingValleys(int n, String s){
+
+        Deque<Character> stack = new ArrayDeque<>();
+        stack.push(s.charAt(0));
+        int i=1;
+        int count=0;
+        while(i<n){
+            char c = s.charAt(i++);
+            char top = 'A';
+            if(c!=stack.peek()){
+                top = stack.pop();
+            }else{
+                stack.push(c);
+            }
+
+            if(stack.isEmpty()){
+                if(top=='D'){
+                    count++;
+                }
+                if(i<n-1) {
+                    stack.push(s.charAt(i++));
+                }
             }
         }
 
